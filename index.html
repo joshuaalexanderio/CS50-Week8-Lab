@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Trivia!</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+      <div class="section-multiple-choice">
+        <h2>Part 1: Multiple Choice</h2>
+        <h3>
+          What is the approximate ratio of people to sheep in New Zealand?
+        </h3>
+        <span id="multiple-correct">Correct</span>
+        <span id="multiple-incorrect">Incorrect</span>
+        <button id="incorrect-answer">6 person per 1 sheep</button>
+        <button id="incorrect-answer">3 people per 1 sheep</button>
+        <button id="incorrect-answer">1 person per 1 sheep</button>
+        <button id="incorrect-answer">1 person per 3 sheep</button>
+        <button id="correct-answer">1 person per 6 sheep</button>
+
+        <!-- TODO: Add multiple choice question here -->
+      </div>
+
+      <div class="section-free-response">
+        <h2>Part 2: Free Response</h2>
+        <h3>
+          In which country is it illegal to own only one guinea pig, as a lone
+          guinea pig might get lonely?
+        </h3>
+        <span id="free-correct">Correct</span>
+        <span id="free-incorrect">Incorrect</span>
+        <input type="text" />
+        <button id="submit-form">Check answer</button>
+        <!-- TODO: Add free response question here -->
+      </div>
+    </div>
+    <script>
+      let buttons = document.querySelectorAll("button");
+      for (let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+        let correct = document.getElementById("multiple-correct");
+        let incorrect = document.getElementById("multiple-incorrect");
+        button.addEventListener("click", () => {
+          if (button.id === "correct-answer") {
+            button.style.backgroundColor = "green";
+            correct.style.display = "block";
+            incorrect.style.display = "none";
+          } else if (button.id === "incorrect-answer") {
+            button.style.backgroundColor = "red";
+            incorrect.style.display = "block";
+            correct.style.display = "none";
+          }
+        });
+      }
+      let inputForm = document.querySelector("input");
+      let checkAnswer = document.getElementById("submit-form");
+      checkAnswer.addEventListener("click", () => {
+        let correct = document.getElementById("free-correct");
+        let incorrect = document.getElementById("free-incorrect");
+        if (inputForm.value.toLowerCase() === "switzerland") {
+          inputForm.style.backgroundColor = "green";
+          correct.style.display = "block";
+          incorrect.style.display = "none";
+        } else {
+          inputForm.style.backgroundColor = "red";
+          incorrect.style.display = "block";
+          correct.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
